@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include "Hand.h" 
 using namespace std;
 
@@ -22,3 +23,8 @@ int Hand::getTotal() const {
     }
     return total;
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:a8277a3fd31187ae571044af808ec23f26b0221b73ea42504125d5929f039f8a
+size 674
+>>>>>>> Stashed changes

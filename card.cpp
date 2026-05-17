@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include "Card.h"
 using namespace std;
 
@@ -35,3 +36,8 @@ int Card::getValue() const {
 string Card::getName() const {
     return name;
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:c07a0e6f5c7bcc9ec57c7dfbd11f0a0b11c503ea0c4da51f99796489ee4ee887
+size 1149
+>>>>>>> Stashed changes

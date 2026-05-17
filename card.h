@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #ifndef CARD_H
 #define CARD_H
 #include <SFML/Graphics.hpp>
@@ -20,3 +21,8 @@ private:
 };
 
 #endif
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:b0409a01f549f18cfa6aa3f8360765f698aaf78ed64b28b924912c87e2d6b594
+size 455
+>>>>>>> Stashed changes

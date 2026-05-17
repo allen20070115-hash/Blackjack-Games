@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include "game.h"
 #include <cstdlib>
 #include <ctime>
@@ -104,3 +105,8 @@ void game::render() {// 畫面渲染
     window.draw(text);//畫文字
     window.display();//顯示畫面
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:9bff5e16bf2c363a542c5cdd000d724e89856259dfab887e1c180581df11a588
+size 3339
+>>>>>>> Stashed changes

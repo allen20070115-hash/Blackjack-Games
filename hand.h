@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #ifndef HAND_H
 #define HAND_H
 #include "Card.h"
@@ -15,3 +16,8 @@ private:
 };
 
 #endif
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:440f1bea38ad391b0fbf790f9b1254a0db43e2d60212decdf9041006eb276ebe
+size 280
+>>>>>>> Stashed changes
