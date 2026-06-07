@@ -10,7 +10,7 @@
 using namespace std;
 
 game::game()
-    : window(sf::VideoMode({1600, 1200}), "Blackjack"),
+    : window(sf::VideoMode({1200, 900}), "Blackjack"),
       player(5000),
       dealer(5000),
       bet(0) {
@@ -94,15 +94,15 @@ void game::stand() {                     // 不要牌
 
 void game::run() {
     // 按鈕
-    Button Button1000({400.f, 650.f}, {200.f, 75.f}, font, "1000");
-    Button Button500({700.f, 650.f}, {200.f, 75.f}, font, "500");
-    Button Button250({1000.f, 650.f}, {200.f, 75.f}, font, "250");
+    Button Button1000({350.f, 500.f}, {150.f, 65.f}, font, "1000");
+    Button Button500({550.f, 500.f}, {150.f, 65.f}, font, "500");
+    Button Button250({750.f, 500.f}, {150.f, 65.f}, font, "250");
 
     while (window.isOpen()) {
         while (auto event = window.pollEvent()) {
             if (event->is<sf::Event::Closed>()) window.close();
-            if (player.getValue() <= 0 || dealer.getValue() <= 0) { // ESC
-                                                                    // 鍵退出
+            if (player.getValue() <= 0 ||
+                dealer.getValue() <= 0) { // ESC 鍵退出
                 if (const auto* keyPressed =
                         event->getIf<sf::Event::KeyPressed>()) {
                     if (keyPressed->code == sf::Keyboard::Key::Escape) {
@@ -149,7 +149,7 @@ void game::run() {
 
         window.clear(sf::Color(30, 120, 30)); // 畫上綠色背景
 
-        render(); // 2. 畫牌與文字
+        render(); // 畫牌與文字
 
         if (bet == 0) { // 沒下注的話就把按鈕疊加上去
             Button1000.draw(window);
@@ -157,7 +157,7 @@ void game::run() {
             Button250.draw(window);
         }
 
-        window.display(); // 4. 一次性將所有東西推上螢幕
+        window.display(); //  一次性將所有東西推上螢幕
     }
 }
 
@@ -165,7 +165,7 @@ void game::render() {                                       // 畫面渲染
     if (player.getValue() <= 0 || dealer.getValue() <= 0) { // 遊戲結束
         window.clear(sf::Color::Black);
 
-        std::string finalStr;
+        string finalStr;
         sf::Color finalColor;
         if (player.getValue() <= 0) {
             finalStr = "GAME OVER\nYou are Bankrupt!";
@@ -178,15 +178,15 @@ void game::render() {                                       // 畫面渲染
         sf::Text finalText(font, finalStr, 80);
         finalText.setFillColor(finalColor);
 
-        // 將文字完美置中在畫面 (1600x1200) 中央
+        // 將文字置中
         sf::FloatRect bounds = finalText.getLocalBounds();
         finalText.setOrigin({bounds.position.x + bounds.size.x / 2.0f,
                              bounds.position.y + bounds.size.y / 2.0f});
-        finalText.setPosition({800.f, 600.f});
+        finalText.setPosition({600.f, 400.f});
 
         window.draw(finalText);
 
-        // 再畫一個提示文字
+        // 提示文字
         sf::Text exitText(font, "Press ESC to Exit", 40);
         exitText.setFillColor(sf::Color::White);
         exitText.setPosition({650.f, 800.f});
@@ -196,29 +196,34 @@ void game::render() {                                       // 畫面渲染
     }
     auto& pCards = playerHand.getCards();
     for (size_t i = 0; i < pCards.size(); ++i)
-        pCards[i].draw(window, {200.f + i * 180, 800.f}, true, font); // 玩家牌
+        pCards[i].draw(window, {200.f + i * 180, 600.f}, true, font); // 玩家牌
 
     auto& dCards = dealerHand.getCards();
     for (size_t i = 0; i < dCards.size(); ++i)
-        dCards[i].draw(window, {200.f + i * 180, 200.f}, (isGameOver || i > 0),
+        dCards[i].draw(window, {200.f + i * 180, 150.f}, (isGameOver || i > 0),
                        font); // 莊家牌
 
     sf::Text text(font, msg, 60); // 遊戲訊息
     text.setFillColor(sf::Color::Yellow);
-    text.setPosition({400.f, 560.f});
+    text.setPosition({250.f, 400.f});
     window.draw(text);
 
     sf::Text playerMoney(
         font, "Your coins: $" + to_string(player.getValue()), // 玩家金錢
         40);
     playerMoney.setFillColor(sf::Color::White);
-    playerMoney.setPosition({1200.f, 1150.f});
+    playerMoney.setPosition({800.f, 800.f});
     window.draw(playerMoney);
 
     sf::Text dealerMoney(
         font, "Dealer coins: $" + to_string(dealer.getValue()), // 莊家金錢
         40);
     dealerMoney.setFillColor(sf::Color::White);
-    dealerMoney.setPosition({1200.f, 50.f});
+    dealerMoney.setPosition({800.f, 50.f});
     window.draw(dealerMoney);
+
+    sf::Text bet(font, "bet: $" + to_string(this->bet), 40); // 目前下注
+    bet.setFillColor(sf::Color::White);
+    bet.setPosition({950.f, 500.f});
+    window.draw(bet);
 }

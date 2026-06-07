@@ -9,7 +9,7 @@ Card::Card(int v, Suit s, string n) {
 
 void Card::draw(sf::RenderWindow& window, sf::Vector2f pos, bool faceUp,
                 const sf::Font& font) const {
-    sf::RectangleShape rect({160.f, 240.f}); // 卡片大小
+    sf::RectangleShape rect({120.f, 180.f}); // 卡片大小
     rect.setPosition(pos);                   // 卡片位置
     rect.setOutlineThickness(2);             // 卡片邊框厚度
     rect.setOutlineColor(sf::Color::Black);  // 卡片邊框顏色
