@@ -74,6 +74,7 @@
 
 ## UML
 
+<img width="1493" height="840" alt="655635643154637" src="https://github.com/user-attachments/assets/b43f60ef-854f-4c92-ab74-ca4ca79130e2" />
 
 
 
